@@ -1,0 +1,82 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	# SSL configuration
+	#
+	# listen 443 ssl default_server;
+	# listen [::]:443 ssl default_server;
+	# include snippets/snakeoil.conf;
+
+	root /home/ljangwon;
+
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+	}
+
+	location ~ /\.ht {
+		deny all;
+	}
+}
+
+
+# Virtual Host configuration for example.com
+#
+# You can move that to a different file under sites-available/ and symlink that
+# to sites-enabled/ to enable it.
+#
+server {
+	listen 80;
+	listen [::]:80;
+#
+	server_name leanmath.leanedu22.site; 
+#
+	root /home/ljangwon/leanmath/;
+	index index.php index.html index.htm index.nginx-debian.html;
+#
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+	}
+	if (!-e $request_filename ) {
+		rewrite ^(.*)$ /index.php last;
+	}
+
+}
+	
+server {
+	listen 80;
+	listen [::]:80;
+#
+	server_name code.leanedu22.site; 
+#
+	root /home/code_user/ci;
+	index index.php index.html index.htm index.nginx-debian.html;
+#
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+	}
+	
+	location ~ /\.ht {
+		deny all;
+	}
+}
+
