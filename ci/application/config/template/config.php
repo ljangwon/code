@@ -24,8 +24,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://code.leanedu22.site/';
-//$config['base_url'] = 'http://leanmath.leanedu22.site/';
-//$config['base_url'] = 'http://jakeleanco.ipdisk.co.kr:8000/';
 
 /*
 |--------------------------------------------------------------------------
