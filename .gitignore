@@ -1,4 +1,4 @@
 /ci/application/config/database.php
 /ci/application/config/database_ipdisk.php
-/ci/.vscode/*
+/ci/.vscode/sftp.json
 /ci/logs/*
